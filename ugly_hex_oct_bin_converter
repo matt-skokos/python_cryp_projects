@@ -1,0 +1,13 @@
+while True:
+    try:
+        how_high_to_go = input("How many numbers for the table?")
+        how_high_to_go = int(how_high_to_go)
+        break
+    except ValueError:
+        print("Need an integer.")
+        continue
+
+list1 = [numbers for numbers in range(how_high_to_go)]
+print("INT     BINARY      OCTAL       HEX")
+
+print(list(filter(lambda x: print(list1[x] + 1, bin(x).rjust(10), oct(x).rjust(10), hex(x).rjust(10)), list1)))
