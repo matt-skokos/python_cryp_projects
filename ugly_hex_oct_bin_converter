@@ -1,3 +1,5 @@
+'''Practicing some lambda functions and remembering some base conversoins'''
+
 while True:
     try:
         how_high_to_go = input("How many numbers for the table?")
@@ -7,7 +9,10 @@ while True:
         print("Need an integer.")
         continue
 
-list1 = [numbers for numbers in range(how_high_to_go)]
-print("INT     BINARY      OCTAL       HEX")
+# list comp for practice
+# list1 = [numbers for numbers in range(how_high_to_go)]
+list1 = list(range(int(how_high_to_go)))
 
-print(list(filter(lambda x: print(list1[x] + 1, bin(x).rjust(10), oct(x).rjust(10), hex(x).rjust(10)), list1)))
+print("INT     BINARY      OCTAL      HEX")
+
+print(list(map(lambda x: print(f'{list1[x] + 1} {bin(x):>10} {oct(x):>10} {hex(x):>10}'), list1)))
