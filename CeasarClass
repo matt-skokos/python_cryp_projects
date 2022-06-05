@@ -1,0 +1,75 @@
+class Caesar:
+    def caesar_encrypt(self, message, key):
+        result = ''
+        for letters in message:
+
+            if ord(letters) == 32:
+                result = result + chr(32)
+            elif letters.islower():
+                letters = str(letters)
+                char_position = ord(letters)
+                new_char_position = char_position + key
+                new_char_position = new_char_position % 123
+                result = result + chr(new_char_position)
+            elif letters.isupper():
+                letters = str(letters)
+                char_position = ord(letters)
+                new_char_position = char_position + key
+                new_char_position = new_char_position % 90
+                result = result + chr(new_char_position)
+        return result
+
+    def caesar_decrypt(self, message, key):
+        result = ''
+        for letters in message:
+            if ord(letters) == 32:
+                result = result + chr(32)
+            elif letters.islower():
+                letters = str(letters)
+                char_position = ord(letters)
+                new_char_position = char_position - key
+                new_char_position = new_char_position % 123
+                result = result + chr(new_char_position)
+            elif letters.isupper():
+                letters = str(letters)
+                char_position = ord(letters)
+                new_char_position = char_position - key
+                new_char_position = new_char_position % 90
+                result = result + chr(new_char_position)
+        return result
+
+
+def process_file(input_filename, output_filename, encode_decode):
+    try:
+        with open(input_filename, 'r') as f:
+            f.read()
+            if encode_decode == 'encode':
+                pass
+            elif encode_decode == 'decode':
+                pass
+    except FileNotFoundError as e:
+        print(e)
+
+
+def main():
+    print("Hello, welcome to the Caesar Cypher encoder/decoder.".center(100))
+    print("This program will encode or decode the contents of a text (.txt) file.\n".center(100))
+    while True:
+        encode_decode = input(f"To encode respond with 'encode', to decode respond with 'decode'"
+                              f"Would you like to encode or decode a file's contents? ")
+        if encode_decode == 'encode':
+            input_filename = input("Enter the name of the file you want to encode: ")
+            output_filename = input("Enter the name of the file you want to output your results to: ")
+            process_file(input_filename, output_filename, encode_decode)
+            break
+        elif encode_decode == 'decode':
+            input_filename = input("Enter the name of the file you want to decode: ")
+            output_filename = input("Enter the name of the file you want to output your results to: ")
+            process_file(input_filename, output_filename, encode_decode)
+            break
+        else:
+            continue
+
+
+if __name__ == "__main__":
+    main()
